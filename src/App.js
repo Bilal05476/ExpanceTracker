@@ -1,24 +1,34 @@
-import React from 'react';
-import { Header } from './components/Header';
-import { Balance } from './components/Balance';
-import { IncomeExpenses } from './components/IncomeExpenses';
-import { TransactionList } from './components/TransactionList';
-import { AddTransaction } from './components/AddTransaction';
+import React from "react";
 
-import { GlobalProvider } from './Context/GlobalState';
-import './App.css';
+// Components
+import { Header } from "./components/Header";
+import { Balance } from "./components/Balance";
+import { IncomeExpenses } from "./components/IncomeExpenses";
+import { TransactionList } from "./components/TransactionList";
+import { AddTransaction } from "./components/AddTransaction";
+
+// StyleSheet
+import "./App.css";
+
+// Reducer (Global State)
+import { StateProvider } from "./StateProvider";
+import reducer, { initialState } from "./reducer";
 
 function App() {
   return (
-    <GlobalProvider>
+    <StateProvider reducer={reducer} initialState={initialState}>
       <Header />
       <div className="container">
-        <Balance />
-        <IncomeExpenses />
+        <div className="left-div">
+          <Balance />
+          <IncomeExpenses />
+        </div>
         <TransactionList />
-        <AddTransaction />
+        <div className="right-div">
+          <AddTransaction />
+        </div>
       </div>
-    </GlobalProvider>
+    </StateProvider>
   );
 }
 
