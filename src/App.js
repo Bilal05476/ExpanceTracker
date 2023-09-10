@@ -19,14 +19,10 @@ function App() {
     <StateProvider reducer={reducer} initialState={initialState}>
       <Header />
       <div className="container">
-        <div className="left-div">
-          <Balance />
-          <IncomeExpenses />
-        </div>
+        <Balance />
+        <IncomeExpenses />
         <TransactionList />
-        <div className="right-div">
-          <AddTransaction />
-        </div>
+        <AddTransaction />
       </div>
     </StateProvider>
   );
